@@ -1,5 +1,7 @@
 from flask import Flask, redirect, render_template, request, url_for
 
+from database import get_database
+
 app = Flask(__name__)
 
 @app.route('/')
@@ -9,10 +11,20 @@ def home():
 @app.route('/register', methods = ["POST", "GET"])
 def register():
   if request.method ==  "POST":
+    #Collect inforamation from html form.
     username = request.form['username']
     password = request.form['password']
-  #sql query to insert thewe to database.
-  return redirect(url_for("login"))  
+
+    #connect to database.
+    db = get_database()
+    
+    #sql query to insert the new values to database.
+    db.execute("insert into users(username, password)values(?,?)",[username, password])
+
+    #Make changes permanent in table
+    db.commit()
+    
+    return redirect(url_for("login"))  
   return render_template('register.html')
 
 @app.route('/login')
