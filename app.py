@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
@@ -6,8 +6,13 @@ app = Flask(__name__)
 def home():
   return render_template('home.html')
 
-@app.route('/register')
+@app.route('/register', methods = ["POST", "GET"])
 def register():
+  if request.method ==  "POST":
+    username = request.form['username']
+    password = request.form['password']
+  #sql query to insert thewe to database.
+  return redirect(url_for("login"))  
   return render_template('register.html')
 
 @app.route('/login')
@@ -17,10 +22,6 @@ def login():
 @app.route('/logout')
 def logout():
   return render_template('home.html')
-
-@app.route('/layout')
-def layout():
-  return render_template('layout.html')
 
 if __name__ == "__main__":
   app.run(host='0.0.0.0', debug=True)
