@@ -1,5 +1,6 @@
 import sqlite3
 
+#import mysql.connector
 from flask import g
 
 
@@ -13,3 +14,14 @@ def get_database():
     g.players_db = conect_to_Database()
 
   return g.players_db
+
+""""mydb = mysql.connector.connect(
+  host="localhost",
+  user=input(""),
+  password=input("")
+)
+
+mycursor = mydb.cursor()
+
+mycursor.execute("CREATE DATABASE users")"""
+
