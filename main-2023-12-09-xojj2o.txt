@@ -1,8 +1,7 @@
-main-2023-12-09-xojj2o
+database: players
+username: hm52yv6yipogno23us92
+host: aws.connect.psdb.cloud
+password: pscale_pw_eZrNqk72z7SRQSKusEsbdJU0xcfJ9l2cnxNRtCXWQfl
 
-8pno7apoj8h1ka591qcm
-pscale_pw_EmcBBjkM4Ue4HfocPoQ8C4aVeRG8UvNlFXn4dAk9zap
-
-mysql -h aws.connect.psdb.cloud -D players -u 8pno7apoj8h1ka591qcm -ppscale_pw_EmcBBjkM4Ue4HfocPoQ8C4aVeRG8UvNlFXn4dAk9zap --ssl-mode=VERIFY_IDENTITY --ssl-ca=/etc/ssl/certs/ca-certificates.crt
 
 

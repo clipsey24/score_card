@@ -1,27 +1,15 @@
-import sqlite3
+from sqlalchemy import create_engine, text
 
-#import mysql.connector
-from flask import g
+db_connection_string = "mysql+pymysql://hm52yv6yipogno23us92:pscale_pw_eZrNqk72z7SRQSKusEsbdJU0xcfJ9l2cnxNRtCXWQfl@aws.connect.psdb.cloud/players?charset=utf8mb4"
 
+engine = create_engine(
+  db_connection_string,
+  connect_args={
+    "ssl": {
+      "ssl_ca": r"C:\Users\chris\Downloads\cacert-2023-08-22.pem"
+    }
+  })
 
-def conect_to_Database():
-  sql = sqlite3.connect("players.db")
-  sql.row_factory = sqlite3.Row
-  return sql
-
-def get_database():
-  if not hasattr(g, "players_db"):
-    g.players_db = conect_to_Database()
-
-  return g.players_db
-
-""""mydb = mysql.connector.connect(
-  host="localhost",
-  user=input(""),
-  password=input("")
-)
-
-mycursor = mydb.cursor()
-
-mycursor.execute("CREATE DATABASE users")"""
-
+with engine.connect() as conn:
+  result = conn.execute(text("select * from list_players"))
+  print(result.all())
