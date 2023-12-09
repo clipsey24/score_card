@@ -1,7 +1,0 @@
-database: players
-username: hm52yv6yipogno23us92
-host: aws.connect.psdb.cloud
-password: pscale_pw_eZrNqk72z7SRQSKusEsbdJU0xcfJ9l2cnxNRtCXWQfl
-
-
-
